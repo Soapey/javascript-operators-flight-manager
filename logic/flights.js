@@ -1,13 +1,16 @@
 function Flights() {
-    function calculateNumberOfFlights(numPassengers, flightCapacity) {
-        if (numPassengers < 0) {
+
+    function calculateNumberOfFlights(passengers, capacity) {
+
+        if (passengers < 0) {
             throw new Error("The number of passengers must be a positive integer value");
         }
-        if (flightCapacity < 0) {
+
+        if (capacity < 0) {
             throw new Error("The capacity of the flight must be a positive integer value");
         }
 
-        return Math.ceil(numPassengers/flightCapacity);
+        return Math.ceil(passengers/capacity);
     }
 
     function checkAircraftRevision(distanceLimit, distancesArray) {
