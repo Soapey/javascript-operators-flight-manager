@@ -1,3 +1,5 @@
+"use strict"
+
 function Util() {
     function calculateTotalDistributedPassengers(object) {
         return  object.vipPassengersWithBusinessSeats + 
@@ -19,7 +21,23 @@ function Util() {
         return;
     }
 
-    return {calculateTotalDistributedPassengers, calculateTotalNumberOfPassengers, checkInput};
+    function calculateTotalDistance(distancesArray) {
+        let totalDistance = 0;
+        distancesArray.map(function(arrayCell) {
+            if (arrayCell >= 0) {
+                totalDistance += arrayCell;
+            }
+        });
+        return totalDistance;
+    }
+
+    function calculateBonusPoints(businessSeatsDistancesArray, economySeatsDistancesArray, businessBonusPercent, economyBonusPercent) {
+        let businessPoints = calculateTotalDistance(businessSeatsDistancesArray) * businessBonusPercent;
+        let economyPoints = calculateTotalDistance(economySeatsDistancesArray) * economyBonusPercent;
+        return businessPoints + economyPoints;
+    }
+ 
+    return {calculateTotalDistributedPassengers, calculateTotalNumberOfPassengers, checkInput, calculateTotalDistance, calculateBonusPoints};
 }
 
 module.exports = Util();

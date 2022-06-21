@@ -1,3 +1,5 @@
+"use strict"
+
 function Prices() {
     function calculateFinalPrice(basePrice, percentPassengerType, percentFlightType) {
         let finalPrice = basePrice;
@@ -29,7 +31,11 @@ function Prices() {
         return calculateFinalPrice(basePrice, percentPassengerType, percentFlightType);
     }
 
-    return {calculateFinalPrice, calculateDefaultFinalPrice};
+    function calculateTotalFinalPrice(numSeats, passengerType, flightType, basePrice) {
+        return numSeats * calculateDefaultFinalPrice(basePrice, passengerType, flightType);
+    }
+
+    return {calculateFinalPrice, calculateDefaultFinalPrice, calculateTotalFinalPrice};
 }
 
 module.exports = Prices();
