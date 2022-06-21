@@ -14,8 +14,7 @@ function onCalculateNumberOfFlights() {
         document.getElementById('flights').innerHTML = error; 
     }
     finally {
-        console.log(passengers);
-        console.log(capacity);
+        console.log("You inserted " + passengers + " passengers and " + capacity + " as capacity");
     }
 }
 
