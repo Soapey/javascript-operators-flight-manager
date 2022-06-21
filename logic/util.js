@@ -32,8 +32,8 @@ function Util() {
     }
 
     function calculateBonusPoints(businessSeatsDistancesArray, economySeatsDistancesArray, businessBonusPercent, economyBonusPercent) {
-        let businessPoints = calculateTotalDistance(businessSeatsDistancesArray) * businessBonusPercent;
-        let economyPoints = calculateTotalDistance(economySeatsDistancesArray) * economyBonusPercent;
+        let businessPoints = calculateTotalDistance(businessSeatsDistancesArray) * (businessBonusPercent/100);
+        let economyPoints = calculateTotalDistance(economySeatsDistancesArray) * (economyBonusPercent/100);
         return businessPoints + economyPoints;
     }
  
