@@ -12,32 +12,33 @@ function Passengers() {
     }
 
     function distributeAllSeatsToAllPassengers(numVIPPassengers, numRegularPassengers, numFlights, businessSeatsPerFlight, economySeatsPerFlight) {
-        let output = {
-            vipBusiness: 0,
-            vipEconomy: 0,
-            regBusiness: 0,
-            regEconomy: 0
-        };
+        let businessSeats = numFlights * businessSeatsPerFlight;
+        let economySeats = numFlights * economySeatsPerFlight;
+
+        let vipPassengersWithBusinessSeats = 0;
+        let vipPassengersWithEconomySeats = 0;
+        let regularPassengersWithBusinessSeats = 0;
+        let regularPassengersWithEconomySeats = 0;
 
         for (let i = 1; i <= numVIPPassengers; i++) {
-            if ((output.vipBusiness + output.regBusiness) < businessSeatsPerFlight) {
-                output.vipBusiness += 1;
+            if ((vipPassengersWithBusinessSeats + regularPassengersWithBusinessSeats) < businessSeats) {
+                vipPassengersWithBusinessSeats += 1;
             }
-            else if ((output.vipEconomy + output.regEconomy) < economySeatsPerFlight) {
-                output.vipEconomy += 1;
+            else if ((vipPassengersWithEconomySeats + regularPassengersWithEconomySeats) < economySeats) {
+                vipPassengersWithEconomySeats += 1;
             }
         }
 
         for (let i = 1; i <= numRegularPassengers; i++) {
-            if ((output.vipBusiness + output.regBusiness) < businessSeatsPerFlight) {
-                output.regBusiness += 1;
+            if ((vipPassengersWithBusinessSeats + regularPassengersWithBusinessSeats) < businessSeats) {
+                regularPassengersWithBusinessSeats += 1;
             }
-            else if ((output.vipEconomy + output.regEconomy) < economySeatsPerFlight) {
-                output.regEconomy += 1;
+            else if ((vipPassengersWithEconomySeats + regularPassengersWithEconomySeats) < economySeats) {
+                regularPassengersWithEconomySeats += 1;
             }
         }
 
-        return output;
+        return {vipPassengersWithBusinessSeats, vipPassengersWithEconomySeats, regularPassengersWithBusinessSeats, regularPassengersWithEconomySeats};
     }
 
     return {checkFlightCapacity, distributeAllSeatsToAllPassengers};
