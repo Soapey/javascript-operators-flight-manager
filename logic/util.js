@@ -12,7 +12,14 @@ function Util() {
         return totalPassengers;
     }
 
-    return {calculateTotalDistributedPassengers, calculateTotalNumberOfPassengers};
+    function checkInput(input) {
+        if (input == undefined || typeof(input) != 'number') {
+            throw new Error("Input must be an integer");
+        }
+        return;
+    }
+
+    return {calculateTotalDistributedPassengers, calculateTotalNumberOfPassengers, checkInput};
 }
 
 module.exports = Util();
