@@ -1,4 +1,34 @@
 function Flights() {
+    function calculateNumberOfFlights(numPassengers, flightCapacity) {
+        if (numPassengers < 0) {
+            throw "The number of passengers must be a positive integer value";
+        }
+        if (flightCapacity < 0) {
+            throw "The capacity of the flight must be a positive integer value";
+        }
 
+        return Math.ceil(numPassengers/flightCapacity);
+    }
+
+    function checkAircraftRevision(distanceLimit, distancesArray) {
+        let totalDistance = 0;
+        distancesArray.map(function(arrayCell) {totalDistance += arrayCell;});
+    
+        if (totalDistance <= (distanceLimit/2)) {
+            return "The revision needs to be done within the next 3 months";
+        }
+        else if (totalDistance > (distanceLimit*0.5) && totalDistance < (distanceLimit*0.75)) {
+            return "The revision needs to be done within the next 2 months";
+        }
+        else if (totalDistance > (distanceLimit*0.75) && totalDistance <= distanceLimit) {
+            return "The revision needs to be done within the next month";
+        }
+        else if (totalDistance > distanceLimit) {
+            throw "Total distance exceeds distance limit";
+        } 
+    }
+
+    return {calculateNumberOfFlights, checkAircraftRevision};
 }
 
+module.exports = Flights();
