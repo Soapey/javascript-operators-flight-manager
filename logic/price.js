@@ -11,18 +11,18 @@ function Prices() {
     function calculateDefaultFinalPrice(basePrice, passengerType, flightType) {
 
         let percentPassengerType = 0;
-        if (String.toLowerCase(passengerType) == 'vip') {
+        if (passengerType.toLowerCase() == 'vip') {
             percentPassengerType = 5;
         }
-        else if (String.toLowerCase(passengerType) == 'regular') {
+        else if (passengerType.toLowerCase() == 'regular') {
             percentPassengerType = -5;
         }
 
         let percentFlightType = 0;
-        if (String.toLowerCase(flightType) == 'economy') {
+        if (flightType.toLowerCase() == 'economy') {
             percentFlightType = -3;
         }
-        else if (String.toLowerCase(flightType) == 'business') {
+        else if (flightType.toLowerCase() == 'business') {
             percentFlightType = 10;
         }
 
